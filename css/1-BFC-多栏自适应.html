@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 400px;
+            margin: 100px auto;
+        }
+        .box img{
+            float: left;
+            width: 150px; /*当图片宽度变化后，BFC元素宽度自适应*/
+        }
+        .right-box{
+            overflow: hidden; /*BFC 原理  消除外部浮动元素的影响*/
+        }
+        .right{
+            height: 200px;
+            background: #f00;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img src="11.JPG">
+        <div class="right-box">
+            <div class="right">了几分快捷键就爱看【盘联动开发计划</div>
+        </div>
+    </div>
+</body>
+</html>
