@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        let str='123456789';
+        let res='';
+        for(let i=0;i<str.length;i=i+4){
+            res+=str.substring(i,i+4)+' ';
+            //substring() 方法返回的子串包括 start 处的字符，但不包括 stop 处的字符。
+        }
+        console.log(res); //1234 5678 9
+    </script>
+</body>
+</html>
