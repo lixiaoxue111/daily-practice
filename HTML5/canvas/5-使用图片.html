@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas{
+            border: 1px solid #dddddd;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="600" height="400"></canvas>
+    <script>
+        var mycanvas = document.querySelector("canvas");
+        var ctx = mycanvas.getContext("2d");
+        var image = new Image();//创建一个img对象的孤儿节点
+        image.src = "girl.png";
+        var step = 0;
+        var x = 0;
+        // 一定等到这个图片loading后，才能渲染它
+        image.onload = function () {
+            setInterval(function () {
+                ctx.clearRect(0,0,600,400);
+                step++;
+                if(step > 4){
+                    step = 0;
+                }
+                ctx.drawImage(image,32 * step,48 * 2,32,48,100+x,100,32,48);
+                x += 4;
+            },100);
+        }
+    </script>
+</body>
+</html>
