@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas{
+            background: #000000;
+            /*overflow: hidden;*/
+        }
+    </style>
+</head>
+<body>
+    <canvas></canvas>
+    <script>
+        var mycanvas = document.querySelector('canvas');
+        var ctx = mycanvas.getContext("2d");
+        var arr = [];
+        //使画布充满整个屏幕
+        mycanvas.width = document.documentElement.clientWidth;
+        mycanvas.height = document.documentElement.clientHeight;
+        function ball(x,y) {
+            this.x = x; // 圆心坐标
+            this.y = y;
+            this.r = 30;
+            this.dx = parseInt(Math.random() * 18) - 9; //x变化值
+            this.dy = parseInt(Math.random() * 18) - 9; //y变化值
+            //this.color = "red";
+            this.color = "rgba("+parseInt(Math.random() * 256)+","+parseInt(Math.random() * 256)+","+parseInt(Math.random() * 256)+","+"0.7"+")";
+            arr.push(this);
+        }
+        ball.prototype.updated = function () {
+            this.x += this.dx;
+            this.y += this.dy;
+            this.r--;
+            if(this.r < 0){
+                this.godie();
+            }
+        };
+        ball.prototype.godie = function () {
+            for(var i=0;i<arr.length;i++){
+                if(arr[i]===this){
+                    arr.splice(i,1);
+                }
+            }
+        };
+        ball.prototype.render = function () {
+            ctx.beginPath();
+            ctx.arc(this.x,this.y,this.r,0,Math.PI * 2,true);
+            ctx.closePath();
+            ctx.fillStyle = this.color;
+            ctx.fill();
+        };
+        setInterval(function () {
+            ctx.clearRect(0,0,mycanvas.width,mycanvas.height);
+            for (var i=0;i<arr.length;i++){
+                arr[i].updated();
+                arr[i] && arr[i].render();//updated后，半径可能小于0，所以需要判断半径不小于0时才渲染
+            }
+        },20);
+        mycanvas.onmousemove = function (e) {
+            new ball(e.clientX,e.clientY);
+        }
+    </script>
+</body>
+</html>
