@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas{
+            border: 1px solid #dddddd;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="500" height="600" id="mycanvas"></canvas>
+    <script>
+        //必须使用js来控制canvas渲染各种东西
+        //使用DOM方法获取画布
+        var mycanvas = document.getElementById("mycanvas");
+        //使用画布的上下文及绘画功能
+        var ctx = mycanvas.getContext("2d");
+        //绘画各种东西，用ctx打点的方法，而不是用mycanvas
+        //ctx.fillRect(100,100,200,30);//ctx.fillRect(x,y,w,h)
+        ctx.strokeStyle="red";//样式必须设置在strokeRect之前，否则不起作用
+        ctx.strokeRect(100,200,30,100);
+
+        // 画线
+        ctx.beginPath();        // 开始划线
+        ctx.moveTo(100,200);   // 将画笔移动到体格位置 ，可以多次使用
+        ctx.lineTo(500,20);   // 用画笔绘画，此时是个抽象的线，并没有显示在画布上，可以多次使用
+        ctx.stroke();        // 画线
+
+        mycanvas.getContext("2d"); // 使用画布的上下文及绘画功能
+        ctx.fillRect(x,y,w,h); //绘制一个矩形的填充
+        ctx.strokeRect(x,y,w,h); //绘制一个矩形的描边
+        ctx.beginPath(); //开始绘制路径
+        ctx.closePath(); //封闭路径
+        ctx.moveTo(x,y); //将画笔移动到某一个点
+        ctx.lineTo(x,y); //将画笔画线，但此时只是虚拟的线
+        ctx.stroke(); //画线
+        ctx.fill(); //填充
+        ctx.strokeStyle="red"; //改变线的颜色 ，在描边前设置
+        ctx.fillStyle="red";//改变填充颜色
+    </script>
+</body>
+</html>
