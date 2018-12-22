@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas{
+            border: 1px solid #dddddd;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="600" height="400"></canvas>
+    <script>
+        var mycanvas = document.querySelector('canvas');
+        var ctx = mycanvas.getContext("2d");
+        var arr = [];//空数组，用来存放每个实例化小球
+        function ball(x,y,r,speed,color) {
+            this.x = x;
+            this.y = y;
+            this.r = r;
+            this.color = color;
+            this.speed = speed;
+            arr.push(this); //把自己推入数组
+        }
+        ball.prototype.render=function () {
+            ctx.beginPath();
+            ctx.arc(this.x,this.y,this.r,0,Math.PI * 2,true);
+            ctx.closePath();
+            ctx.fillStyle = this.color;
+            ctx.fill();
+        };
+        ball.prototype.updated=function () {
+            this.x += this.speed;
+        };
+        setInterval(function () {
+            ctx.clearRect(0,0,mycanvas.width,mycanvas.height);
+            for(var i=0;i<arr.length;i++){
+                arr[i].updated();
+                arr[i].render();
+            }
+        },20);
+        new ball(60,60,20,2,"red");
+        new ball(80,80,30,4,"orange");
+        new ball(100,100,20,5,"green");
+        new ball(60,200,20,6,"blue");
+        new ball(60,300,20,8,"red");
+    </script>
+</body>
+</html>
