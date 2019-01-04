@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        /*
+
+        GO{
+            a : undefined
+            demo : function(){}
+            f : 111
+        }
+        */
+        a = 100;
+        function demo(e) {
+           function e() {
+
+           }
+           arguments[0] = 2;
+           console.log(e);//2
+           if (a){
+               var b = 123;
+               function c() {
+
+               }
+           }
+           var c;
+           a = 10;
+           var a;
+           console.log(b);//undefined
+           f = 111;
+           console.log(c);//undefined
+           console.log(a);//10
+        }
+        var a;
+        /*
+           AO{
+                e : undefined  ==> 1
+                b : undefined  ==>
+                c : undefined  ==>        ==> function c(){}
+                a : undefined
+           }
+
+        */
+        demo(1);
+        console.log(a);//100
+        console.log(f);//111
+    </script>
+</body>
+</html>
