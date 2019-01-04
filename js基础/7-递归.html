@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>递归</title>
+</head>
+<body>
+    <script>
+        //斐波那契数列
+        function fb(n) {
+            if (n == 1 || n == 2){   //出口
+                return 1;
+            }
+            return fb(n-1) + fb(n-2)  // 规律
+        }
+
+
+        // n阶乘
+        function mul(n) {
+            if(n == 0 || n == 1){
+                return 1;
+            }
+            return n * mul(n-1);
+        }
+    </script>
+</body>
+</html>
