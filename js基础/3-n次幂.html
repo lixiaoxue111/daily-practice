@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        //  2的n次幂
+        //1 * 2
+        //1 * 2 * 2
+        //1 * 2 * 2 * 2
+        //1 * 2 * 2 * 2 * 2
+        //var n=parseInt(window.prompt('input'));
+        /*var mul = 1;
+        for (var i = 0 ; i<n;i++){
+            mul = mul * 2;
+        }
+        document.write(mul);*/
+
+
+        // n 的阶乘
+        /*var mul = 1;
+        for(var i=1;i<=n;i++){
+            mul*=i;
+        }
+        document.write(mul);*/
+
+
+        // 最大数
+        var a = parseInt(window.prompt('input'));
+        var b = parseInt(window.prompt('input'));
+        var c = parseInt(window.prompt('input'));
+        // 方法一
+      /*  var max = a;
+        if(max < b){
+            max = b;
+        }else if(max < c){
+            max = c;
+        }
+        document.write(max);*/
+        // 方法二
+        if(a < b){
+            if(b < c){
+                document.write(c);
+            }else{
+                document.write(b);
+            }
+        }else {
+            if(a < c){
+                document.write(c);
+            }else {
+                document.write(a);
+            }
+        }
+    </script>
+</body>
+</html>
