@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        console.log(typeof(a)); // undefined(字符串类型)  typeof里的变量如果事先没有定义，不会报错
+        console.log(typeof(undefined)); //undefined(字符串类型)
+        console.log(typeof(NaN));//number(字符串类型)
+
+        var b='123abc';
+        console.log(typeof(+b)); //number(字符串类型)
+        console.log(typeof(!!b)); // boolean(字符串类型)
+        console.log(typeof(b+"")); // string
+
+        console.log(1=="1");//true
+        console.log(1==="1");//false
+
+        console.log(NaN==NaN);//false
+        console.log(NaN===NaN);//false
+        console.log(NaN==undefined);//false
+
+        console.log(11+"11");//1111
+
+    </script>
+
+</body>
+</html>
