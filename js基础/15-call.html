@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>call</title>
+</head>
+<body>
+    <script>
+        function Person(name,age,sex) {
+            this.name=name;
+            this.age=age;
+            this.sex=sex;
+        }
+        function Student(name,age,sex,sno,tel) {
+            Person.call(this,name,age,sex);
+            this.sno=sno;
+            this.tel=tel;
+        }
+    </script>
+</body>
+</html>
