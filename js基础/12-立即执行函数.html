@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        //把函数执行的结果保存在num里，函数执行完就被销毁
+        /*var num = (function (a,b,c) { // a,b,c为形参
+            var d = a + b + c * 8 -9;
+            return d;
+        })(1,2,3);//实参
+        console.log(num);*/
+
+
+        function test(){
+            var arr = [];
+            for(var i = 0; i < 10; i ++){
+                (function (j) {
+                    arr[j] = function () {
+                        console.log(j);
+                    }
+                })(i)
+            }
+            return arr;
+        }
+
+        var myArr = test();
+        for (var j=0;j<10;j++){
+            myArr[j]();
+        }
+
+    </script>
+</body>
+</html>
