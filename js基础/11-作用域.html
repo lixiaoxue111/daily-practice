@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+     /*   function a() {
+            var num = 100;
+            function b() {
+                num++;
+                console.log(num);
+            }
+            return b;
+        }
+        var demo = a();
+        demo(); //101
+        demo(); //102*/
+
+     function f1() {
+         var num = 100;
+         function f2() {
+             num++;
+             console.log(num);
+         }
+         function f3() {
+             num--;
+             console.log(num);
+         }
+         return [f2,f3];
+     }
+     var arr = f1();
+     arr[0](); //101
+     arr[1](); //100
+    </script>
+</body>
+</html>
