@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>this</title>
+</head>
+<body>
+    <script>
+       /* var name = '222';
+        var a = {
+            name:"111",
+            say:function () {
+                console.log(this.name)
+            }
+        };
+        var fun = a.say;
+        fun(); //222  因为是window在调用fun方法
+        a.say();//111
+
+        var b = {
+            name:"333",
+            say:function (fun) {
+                fun();
+            }
+        };
+        b.say(a.say);//222
+        b.say = a.say;
+        b.say();//333*/
+
+
+
+        /*var foo = 123;
+        function print() {
+            this.foo = 345;
+            console.log(foo);
+        }
+        print();//345 因为foo是全局变量，在函数里值被改了
+        new print();*/
+
+
+        var a = 5;
+        function test() {
+            //使用new的时候  相当于执行：
+            //var this = {
+            //     __proto__ : test.prototype
+            // }
+        }
+            a = 0;
+            alert(a);
+            alert(this.a);
+            var a;// 没有这句就和上面的例子一样
+            alert(a)
+        }
+       // test(); //  0  5   0
+        new test();// 0  undefined 0
+    </script>
+</body>
+</html>
