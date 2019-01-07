@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        //模拟isNaN方法
+        function IsNaN(num){
+            var ret = Number(num);
+            ret += "";//因为NaN !=NaN ，所以只能把它转换为字符串，方便比较
+            if(ret == "NaN"){
+                return true
+            }else {
+                return false
+            }
+        }
+    </script>
+</body>
+</html>
