@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>继承</title>
+</head>
+<body>
+    <script>
+        function inherit(Target,Origin) {
+            function F(){};
+            F.prototype = Origin.prototype;
+            Target.prototype = new F();//中间层，防止Target修改原型上的属性时，修改
+            Target.prototype.constructor = Target;
+            Target.prototype.uber = Origin.prototype;//Target真正继承的原型
+        }
+        function Father() {
+
+        }
+        function Son() {
+
+        }
+        inherit(Son,Father);
+        var son = new Son();
+        var father = new Father();
+    </script>
+</body>
+</html>
