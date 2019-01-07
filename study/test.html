@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul id="oul">
+        <li class="cc aa bb">1</li>
+        <li>2</li>
+        <li class="aa">3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <ul>
+        <li>21</li>
+        <li>22</li>
+        <li>23</li>
+    </ul>
+    <script>
+        function getEleByClass(ele,content) {
+            content=content||document;
+            var result=[];
+            var aEle=content.getElementsByTagName('*');
+            for(var i=0;i<aEle.length;i++){
+                var strN=aEle[i].className;
+                var arr=strN.split(' ');
+                for(var j=0;j<arr.length;j++){
+                    if(arr[j]==ele){
+                        result.push(aEle[i]);
+                    }
+                }
+            }
+            return result;
+        }
+
+        var oUl=document.getElementById('oul');
+        var oA=getEleByClass('aa',oUl);
+        for(var i=0;i<oA.length;i++){
+            oA[i].style.background='red';
+        }
+    </script>
+</body>
+</html>
