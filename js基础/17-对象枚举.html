@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        var obj = {
+            name:"lisi",
+            age:21,
+            height:160,
+            weight:93,
+            __proto__:{
+                say:"haha"
+            }
+        };
+        for(key in obj){
+            if(obj.hasOwnProperty(key)){//hasOwnProperty判断是不是自己的属性，不包括原型上的属性，in也可以，但是in包括原型上的属性
+                //console.log(obj.key);// undefined  因为obj.key ==> obj['key']
+                console.log(obj[key]);//key为变量，只能用[]访问
+            }
+        }
+    </script>
+</body>
+</html>
