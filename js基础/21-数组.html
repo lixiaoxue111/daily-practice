@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        var arr = [1,22,3];
+        Array.prototype.myPush = function () { //模拟数组的push方法
+            for(var i = 0;i<arguments.length;i++){
+                this[this.length] = arguments[i];
+            }
+            return this.length;
+        };
+
+        var arr1 = [1,2,3,5];
+        arr.splice(3,0,4);//[1,2,3,4,5]
+    </script>
+</body>
+</html>
