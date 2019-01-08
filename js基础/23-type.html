@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+
+        //封装type方法   判断数据类型
+        //分两类  原始值  引用值
+        //区分引用值
+        function type(target) {
+            var template = {
+                "[object Array]":"array",
+                "[object Object]":"object",
+                "[object Number]":"number - object",
+                "[object Boolean]":"boolean - object",
+                "[object String]":"string - object"
+            };
+            if(target === null){
+                return "null";
+            }else if(typeof (target) == "object"){
+                var str = Object.prototype.toString.call(target);
+                return template[str];
+            }else {
+                return typeof (target);
+            }
+        }
+    </script>
+</body>
+</html>
