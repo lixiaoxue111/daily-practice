@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+      /* function mySort(a,b){
+           if(a > b){
+               return -1;
+           }
+           if(a < b){
+               return 1;
+           }else {
+               return 0;
+           }
+       }*/
+      function mySort(a,b) {
+         // return a - b ;//升序
+          return b - a ; //降序
+      }
+       var arr = [1,12,33,22,1,5];
+       arr.sort(mySort);
+
+
+
+        // 给一个有序的数组，乱序输出
+        var arr2 = [1,2,3,4,5,6,7];
+       arr2.sort(function () {
+           return Math.random() - 0.5;
+       });
+
+        //计算字节数
+        function retBytes(str) {
+            var num = str.length;
+            for(var i=0;i<str.length;i++){
+              if(str[i].charCode>255){
+                  num++;
+              }
+            }
+            return num;
+        }
+        var arr3 = ["里斯aaa","jdjjj","kkf好","就kkds","jkdfdjjjjkjjkkssss"];
+        arr3.sort(function (a,b) {
+            return retBytes(a) -retBytes(b);//按字节长度排序
+        })
+    </script>
+</body>
+</html>
