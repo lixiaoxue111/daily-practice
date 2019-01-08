@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        Array.prototype.myUnique = function () {
+            var obj = {};
+            var arr = [];
+            var len = this.length;
+            for(var i = 0;i<len;i++){
+                if(!obj[this[i]]){ //把数组的值作为对象属性名，如果属性名不存在，（返回undefined，再取反），就push到新数组里
+                    obj[this[i]] = 'abc';
+                    arr.push(this[i]);
+                }
+            }return arr;
+        };
+        var arr1 = [1,1,2,3,5,5,6,4,3,3];
+        console.log(arr1.myUnique());
+    </script>
+</body>
+</html>
