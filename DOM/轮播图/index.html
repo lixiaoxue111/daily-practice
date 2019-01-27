@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        .container{
+            width:750px ;
+            height: 291px;
+            margin: 70px auto;
+            overflow: hidden;
+            position: relative;
+        }
+        #img-box{
+            width: 3750px;
+            position: absolute;
+        }
+        #img-box img{
+            float: left;
+        }
+        #btn-box{
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
+        .arrow-box{
+            position: absolute;
+            left: 10px;
+            bottom: 10px;
+        }
+        #btn-box li,.arrow-box span{
+            float: left;
+            border-radius: 10px;
+            width: 25px;
+            height: 25px;
+            line-height: 25px;
+            text-align: center;
+            color: #ffffff;
+            background: rgba(0,0,0,.5);
+            margin-left: 10px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        #btn-box .btn-active{
+            background: orangered;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="img-box">
+            <img src="img/1.jpg">
+            <img src="img/2.jpg">
+            <img src="img/3.jpg">
+            <img src="img/4.jpg">
+            <img src="img/5.jpg">
+        </div>
+        <ul id="btn-box">
+            <li class="btn-active">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+        <div class="arrow-box">
+            <span id="prev">&lt;</span>
+            <span id="next">&gt;</span>
+        </div>
+    </div>
+    <script>
+        var oImgBox = document.getElementById('img-box');
+        var oBtn = document.getElementById('btn-box');
+        var aLi = oBtn.getElementsByTagName('li');
+        var oPrev = document.getElementById('prev');
+        var oNext = document.getElementById('next');
+        var count = 0;
+        function change(idx) {
+            for(var i=0;i<aLi.length;i++){
+                aLi[i].className='';
+            }
+            aLi[idx].className='btn-active';
+            oImgBox.style.left = -idx * 750+"px";//必须先定位
+        }
+        for (var i=0;i<aLi.length;i++){
+            aLi[i].index = i;
+            aLi[i].onclick=function () {
+                change(this.index);
+                count=this.index;
+            }
+        }
+        //上一个按钮
+        oPrev.onclick=function () {
+            count--;
+            if(count == -1){
+                count = aLi.length-1;
+            }
+            change(count);
+        };
+        //下一个按钮
+        oNext.onclick=function () {
+            count++;
+            if(count==aLi.length){
+                count=0;
+            }
+            change(count);
+        };
+        function run() {
+            var timer = setInterval(function () {
+                oNext.onclick();
+            },2000)
+        }
+        run();
+    </script>
+</body>
+</html>
