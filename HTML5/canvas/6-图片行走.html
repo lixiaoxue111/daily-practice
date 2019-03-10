@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas{
+            border: 1px solid #dddddd;
+        }
+    </style>
+</head>
+<body>
+<canvas width="600" height="400"></canvas>
+<script>
+    var mycanvas = document.querySelector("canvas");
+    var ctx = mycanvas.getContext("2d");
+    var image = new Image();//创建一个img对象的孤儿节点
+    image.src = "girl.png";
+    // 一定等到这个图片loading后，才能渲染它
+    image.onload = function () {
+        ctx.drawImage(image,20,20);
+    }
+</script>
+</body>
+</html>
