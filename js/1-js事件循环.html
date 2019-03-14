@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        console.log('log1');
+        new Promise(function(resolve, reject) {
+            console.log('promise11');
+            resolve();
+        }).then(function() {
+            console.log('then1');
+            new Promise(function (resolve, reject) {
+                console.log('promise22');
+                resolve();
+            }).then(() => {
+                console.log('then22');
+            })
+        });
+        setTimeout(function() {
+            console.log('setTimeout');
+        }, 0);
+        console.log('log2');
+        /*
+        当代码运行的时候， 会先执行同步的代码依次打印出 log1 promise11 log2 (promiese解释)
+        同步代码执行完后 会到 微任务队列中查看是否有任务需执行， 因此 取出 promise.then 执行，
+        这时打印出 then1 promise22, 将第二个 promise 的 then 回调发到微任务中， 当执行栈的代码执行完之后，
+        再到微任务队列中查看, 这时 取出第二个 promise.then 的回调到执行栈中执行 打印出 then22,
+        执行栈的代码执行完后， 再到微任务队列中查看， 此时发现微任务队列被清空， 再到 任务队列对取出
+        setTimeout 的 callback 执行 打印出 setTimeout
+        综上输出的结果为 log1 => promise11 => log2 => then1 => promise22 => then2 => setTimeout
+
+        */
+    </script>
+</body>
+</html>
