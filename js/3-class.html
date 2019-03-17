@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        function Person(name,age){
+            this.name = name;
+            this.age = age;
+            this.sayHi = function(){//特权方法
+                alert('hi....')
+            };
+            var sex = 'male';//私有属性
+            var test = function () {//私有方法
+
+            }
+        }
+
+        //共有方法
+        Person.prototype.sayHi = function () {//原型
+            alert(this.name);
+        };
+
+        Person.sayHi = function(){//静态方法
+            alert('hi..')
+        }
+    </script>
+</body>
+</html>
