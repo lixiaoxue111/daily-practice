@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        var arr1 = [5,6,2,10,3,4,8];
+        function sort1(arr) {
+            var result = arr.slice(0); //数组副本
+            var tmp,j;
+            for(var i=0;i<arr.length;i++){
+                tmp = result[i];
+                j = i - 1;
+                while(j>=0 && tmp<result[j]){
+                    result[j+1] = result[j];
+                    j--;
+                }
+                result[j+1] = tmp;
+            }return result;
+        }
+       console.log( sort1(arr1) ); //[2, 3, 4, 5, 6, 8, 10]
+       console.log(arr1);
+    </script>
+</body>
+</html>
