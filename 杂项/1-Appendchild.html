@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul id="box"></ul>
+    <script>
+        (() => {
+            var oBox = document.getElementById('box');
+            if(!oBox){
+                return;
+            }
+            for(var i = 0;i<300;i++){
+                var aLi = document.createElement('li');
+                aLi.innerText = i+1;
+                oBox.appendChild(aLi);
+            }
+            oBox.addEventListener('click',function (e) {
+                if(e.target.tagName === 'LI'){
+                    alert(e.target.innerHTML)
+                }
+            })
+        })()
+    </script>
+</body>
+</html>
