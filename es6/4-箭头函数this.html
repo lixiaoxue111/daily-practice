@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        function fn() {
+            return () =>{
+                return () =>{
+                    return () =>{
+                        console.log("id:",this.id)
+                    }
+                }
+            }
+        }
+        var f = fn.call({id:1});
+        var t1 = f.call({id:2})()();
+        var t2 = f().call({id:3})();
+        var t3 = f()().call({id:4});
+        console.log(t1);  //id:1
+        console.log(t2);  //id:1
+        console.log(t3);  //id:1
+
+    </script>
+</body>
+</html>
