@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="div1"></div>
+    <script>
+        var data = {};
+        var ele = document.getElementById('div1');
+        data[ele] = 'mes';
+        console.log( data[ele] );
+       console.log( data['[object HTMLDivElement]'] ); //mes
+    </script>
+</body>
+</html>
