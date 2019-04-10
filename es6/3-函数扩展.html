@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        let x = 99;
+        function fn(p=x+1) { // 参数默认值每次调用都要重新计算表达式
+            console.log(p);
+        }
+        fn(); //100
+        fn(); //100
+    </script>
+</body>
+</html>
