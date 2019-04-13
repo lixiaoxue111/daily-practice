@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            width: 500px;
+            margin: 100px auto;
+            position: relative;
+            border: 1px solid #ccc;
+            background: #eeeeee;
+            padding: 20px;
+        }
+        #input{
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: -1;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <p id="text">fufuuffuufu</p>
+        <textarea id="input">hahah</textarea>
+        <button id="copy" onclick="copyText()">click</button>
+    </div>
+    <script>
+        function copyText() {
+            // 思路：
+            // 点击按钮的时候，先把 <textarea> 的 value 改为 <p> 的 innerText，然后复制 <textarea> 中的内容
+            var text = document.getElementById("text").innerText;
+            var input = document.getElementById("input");
+            input.value = text; // 修改文本框的内容
+            input.select(); // 选中文本
+            document.execCommand("copy"); // 执行浏览器复制命令
+            alert("复制成功");
+        }
+    </script>
+</body>
+</html>
