@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+    </style>
+</head>
+<body>
+<script>
+    var input = '11011110001111100111';
+    //var input = read_line();
+    input = input.toString();
+    var arr1 = Array.from(input);
+    for (let index = 0; index < arr1.length; index++) {
+        arr1[index]=parseInt(arr1[index]);
+    }
+    if(arr1[0] == 1 && arr1[arr1.length - 1] == 1){
+        while (arr1[arr1.length - 1] == 1) {
+            arr1.pop();
+            arr1.splice(0,0,1);
+        }
+    }
+    var sum = 0;
+    var cur = 0;
+    var temp = 0;
+    for (let index = 0; index < arr1.length; index++) {
+        if(arr1[index] == 1 && temp == 0){
+            cur = index ;temp++;
+        }else if(arr1[index] == 1 && index == cur + 1){
+            cur = index ;temp++;
+        }
+        if(sum < temp && cur != 0 && (arr1[index] == 0 || index == arr1.length -1) ){
+            sum = temp;
+            temp = 0;
+            cur = 0;
+        }
+    }
+    console.log(sum);
+</script>
+</body>
+</html>
