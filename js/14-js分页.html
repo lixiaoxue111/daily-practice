@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style type="text/css">
+        a{
+            margin:5px;
+        }
+    </style>
+</head>
+<body>
+<div id="div1">
+
+</div>
+</body>
+<script>
+    //采用组件的写法
+    page({
+        id:'div1',
+        nowNum:10,　　　　//当前的页码
+        allNum:10,　　　　//总共的页码
+        callBack:function(now,all){
+            alert('当前页：'+now+'总共页：'+all);
+        }
+    });
+    function page(opt){
+        if(!opt.id)return false;    //如果没有传元素，就不向下执行了
+        var obj = document.getElementById(opt.id);
+        var nowNum = opt.nowNum || 1;        //默认的处理
+        var allNum = opt.allNum || 5;
+        var callBack = opt.callBack || function(){};
+        //首页
+        if(nowNum>=4&&allNum>=6){
+            var oA = document.createElement('a');
+            oA.href = '#1';
+            oA.innerHTML = '首页';
+            obj.appendChild(oA);
+        }
+        //上一页
+        if(nowNum>=2){
+            var oA = document.createElement('a');
+            oA.href = '#'+(nowNum-1);
+            oA.innerHTML = '上一页';
+            obj.appendChild(oA);
+        }
+        //当总页数小于等于5页的情况
+        if(allNum<=5){
+            for(var i=1;i<=allNum;i++){
+                var oA = document.createElement('a');
+                oA.href = '#'+i;
+                if(nowNum == i){        //当前页的处理
+                    oA.innerHTML = i;
+                }else{
+                    oA.innerHTML = '[' + i + ']';
+                }
+                obj.appendChild(oA);
+            }
+        }else{        //当总页数大于5页的情况
+
+            for(var i=1;i<=5;i++){
+                var oA = document.createElement('a');
+                if(nowNum == 1 || nowNum == 2){        //对当前页是第一页和第二页的时候做一个特殊处理
+                    oA.href = '#'+ i;
+                    if(nowNum == i){
+                        oA.innerHTML = i;
+                    }else{
+                        oA.innerHTML = '[' + i + ']';
+                    }
+                }else if((allNum-nowNum) == 0 || (allNum-nowNum) == 1){        //最后两个页码做特殊处理
+                    oA.href = '#'+ (allNum-5+i);
+                    if((allNum - nowNum) == 0 && i == 5){            //这一块的逻辑较为复杂
+                        oA.innerHTML = (allNum -5+i);
+                    }else if((allNum - nowNum) == 1 && i == 4){
+                        oA.innerHTML = (allNum -5+i);
+                    }else{
+                        oA.innerHTML = '['+(allNum-5+i)+']';
+                    }
+                }else{
+                    oA.href = '#'+ (nowNum-3+i);
+                    if(i==3){
+                        oA.innerHTML = (nowNum-3+i);
+                    }else{
+                        oA.innerHTML = '['+(nowNum-3+i)+']';
+                    }
+
+                }
+                obj.appendChild(oA);
+            }
+        }
+
+        //下一页
+        if((allNum-nowNum)>=1){
+            var oA = document.createElement('a');
+            oA.href = '#'+(nowNum+1);
+            oA.innerHTML = '下一页';
+            obj.appendChild(oA);
+        }
+        //尾页
+        if((allNum-nowNum)>=3 && allNum>=6){
+            var oA = document.createElement('a');
+            oA.href = '#'+allNum;
+            oA.innerHTML = '尾页';
+            obj.appendChild(oA);
+        }
+        //执行回调
+        callBack(nowNum,allNum);
+        //添加点击事件
+        var aA = obj.getElementsByTagName('a');
+        for(var i=0;i<aA.length;i++){
+            aA[i].onclick = function(){
+                var nowNum = parseInt(this.getAttribute('href').substring(1))            //注意这里获取href的时候不要用this.href，因为这样获取到的是一个绝对地址,要用getAttribute
+                //获取到此刻的页码，重新渲染
+                obj.innerHTML = '';        //清空
+                page({
+                    id:opt.id,
+                    nowNum:nowNum,
+                    allNum:allNum,
+                    callBack:callBack
+                });
+                return false;    //阻止默认事件
+            }
+        }
+
+    }
+</script>
+</html>
