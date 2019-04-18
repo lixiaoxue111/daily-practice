@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script src="jquery-3.3.1.min.js"></script>
+    <script>
+        function jsonToStr(jsonObj){
+            let str = "";
+            $.each(jsonObj,function(index,val){
+                str += "," + index + ":" + val;
+
+            });
+            console.log(str); // ,name:zs,age:21,school:linda
+            if(str != ""){
+                str = str.substring(1);  //  从1往后截取（去掉第一位的  "  , "  )
+                console.log(str);  //  name:zs,age:21,school:linda
+            }
+            return "{ " + str + "}";   //  转为字符串对象  "{ name:zs,age:21,school:linda}"
+        }
+        let obj = {
+            name:'zs',
+            age:'21',
+            school:'linda'
+        };
+        jsonToStr(obj);
+    </script>
+</body>
+</html>
