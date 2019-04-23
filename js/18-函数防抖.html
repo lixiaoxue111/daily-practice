@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="button" value="click" id="aa">
+    <script>
+        function debounce(fn,delay) {
+            let timeOut = null;
+            return function () {
+                clearTimeout(timeOut);
+                timeOut = setTimeout(()=>{
+                    fn.call(this,arguments);
+                },delay)
+            }
+        }
+
+        var oInput = document.getElementById('aa');
+        oInput.onclick = debounce(function () {
+            console.log("hhhhhhh");
+        },1000)
+    </script>
+</body>
+</html>
