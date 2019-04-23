@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        function throttle(fn,delay) {
+            let canRun = true; // 是否可以执行循环的标记
+            return function () {
+                if(!canRun) return;
+                canRun = false;
+                setTimeout(()=>{
+                    fn.call(this,arguments);
+                    canRun = true; // 表示可以执行下一次循环了
+                },delay)
+            }
+        }
+
+        document.onmousemove = throttle(function () {
+            console.log("hahhah");
+        },1000)
+    </script>
+</body>
+</html>
