@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="div1">
+
+
+    </div>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="browser.min.js"></script>
+    <script type="text/babel">
+        // 利用函数定义组件
+      /* let Welcome = () =>{
+           //return <h1>welcome</h1>
+           return (
+               <div>
+                    welcome
+                   <h1>wwww</h1>
+               </div>
+
+           )
+       };
+       ReactDOM.render(<Welcome/>,document.getElementById('div1'));*/
+
+
+      // 利用 ES6  的 class
+
+        class Welcome extends React.Component{
+            render(){
+                return <h1>2222222</h1>
+            }
+        }
+        ReactDOM.render(
+            <Welcome/>
+            ,document.getElementById('div1')
+        )
+    </script>
+</body>
+</html>ujjhhhh
