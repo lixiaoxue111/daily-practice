@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="browser.min.js"></script>
+    <script type="text/babel">
+        class Count extends React.Component{
+            constructor(prams){
+                super(prams);
+                this.state = {
+                    num:2,
+                    name:'lisi'
+                };
+                this.sayHi = this.sayHi.bind(this);
+            }
+            addHander(){ // 自定义方法   this为undefined  可以在render里调用的时候用bind改变this，也可以在construct里该
+                this.setState({
+                    num: ++this.state.num
+                    })
+            }
+            sayHi(){
+                console.log(this)
+            }
+            render(){
+                return (
+                    <div>
+                        <h1>{this.state.num}</h1>
+                        <button onClick={this.addHander.bind(this)}>click</button>
+                        <button onClick={this.sayHi}>show</button>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(<Count/>,document.getElementById('root'));
+    </script>
+</body>
+</html>
