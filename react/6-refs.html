@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="browser.min.js"></script>
+    <script type="text/babel">
+        class MyComponent extends React.Component{
+            constructor(props){
+                super(props);
+                this.clickHandler = this.clickHandler.bind(this);
+            }
+            clickHandler(e){
+                //console.log(this.refs.name); // 获取DOM元素
+               // console.log(this.refs.name.value);// 获取值
+                console.log(this.myInput); // 获取DOM  官方推荐
+            }
+            render(){
+                return (
+                    <div>
+                        <input type="text" ref="name"/>
+                        <button onClick={this.clickHandler}>click</button>
+
+                        <input type="text" ref={ (input) => {
+                            this.myInput = input
+                        }}/>
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(<MyComponent/>,document.getElementById('root'))
+    </script>
+</body>
+</html>
