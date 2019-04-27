@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .red{
+            background: #ff0000;
+            color: #00A862;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="browser.min.js"></script>
+    <script type="text/babel">
+        class Main extends React.Component{
+            render(){
+                let style = {
+                    background:'blue',
+                };
+                return (
+                    <div>
+                        <h1 className="red">方式一：添加className，不能写class，因为class在js中属于关键字</h1>
+                        <div style={style}>方法二</div>
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(<Main/>,document.getElementById('root'))
+    </script>
+</body>
+</html>
