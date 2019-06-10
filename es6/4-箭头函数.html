@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Person(){
+            this.age = 0;
+            console.log(this.age); //0
+            // setInterval(function(){
+            //     console.log(this.age); // undefine  指向window
+            //     this.age++;
+            //     console.log(this.age) // NaN
+            // },1000)
+            setInterval(()=>{  // 箭头函数this指向上一级作用域
+                console.log(this.age); //0
+                this.age++;
+                console.log(this.age);//1
+            },10000)
+        }
+        var p = new Person();
+        
+    </script>
+</body>
+</html>
